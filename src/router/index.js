@@ -10,6 +10,9 @@ import Detail from '../views/Detail'
 import GoodsList from '../views/GoodsList'
 import AddGoods from '../views/AddGoods'
 import SearchGoods from '../views/Goods/SearchGoods'
+import UpLoadImage from '../views/Marking/UpLoadImage'
+import GoodsGrade from '../views/Marking/GoodsGrade'
+import GoodsGradeDetail from '../views/Marking/GoodsGradeDetail'
 
 Vue.use(VueRouter)
 
@@ -18,6 +21,14 @@ const routes = [
     path: '/myown',
     component: Myown,
     name: 'Myown'
+  },
+  {
+    path: '/goodsgradedetail',
+    component: GoodsGradeDetail
+  },
+  {
+    path: '/uploadimage',
+    component: UpLoadImage
   },
   {
     path: '/searchGoods',
@@ -48,6 +59,10 @@ const routes = [
     path: '/start',
     component: Start,
     name: 'start'
+  },
+  {
+    path: '/goodsGrade',
+    component: GoodsGrade
   },
   {
     path: '/regist',

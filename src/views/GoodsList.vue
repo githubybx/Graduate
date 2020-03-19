@@ -48,6 +48,7 @@ export default {
       this.$router.push('/start')
     },
     gotoDetail (item) {
+      console.log(item.pid)
       this.$router.push({
         path: `/detail/${item.pid}`,
         query: {

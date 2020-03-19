@@ -2,7 +2,7 @@
 <div class="detail">
     <div class="inside">
          <div class="bottom"></div>
-        <tr v-for="(item,index) in goods" :key="item.pid">
+        <tr v-for="(item,index) in goods" :key="item">
             <td>{{index}}</td>
             <td>{{item}}</td>
         </tr>
@@ -14,14 +14,15 @@
 </template>
 <script>
 export default {
-  mounted () {
-    console.log(this.$route.query.data)
-    this.goods = this.$route.query.data
-  },
   data () {
     return {
       goods: ''
     }
+  },
+  mounted () {
+    console.log('haha')
+    console.log(this.$route.query.data)
+    this.goods = this.$route.query.data
   },
   methods: {
     getReturn () {
