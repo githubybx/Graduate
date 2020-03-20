@@ -13,7 +13,6 @@ import SearchGoods from '../views/Goods/SearchGoods'
 import UpLoadImage from '../views/Marking/UpLoadImage'
 import GoodsGrade from '../views/Marking/GoodsGrade'
 import GoodsGradeDetail from '../views/Marking/GoodsGradeDetail'
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -89,4 +88,40 @@ const router = new VueRouter({
   routes
 })
 
+const checkLogin = {
+  doLgin () {
+    var list = []
+    if (document.cookie !== '') {
+      console.log(document.cookie)
+      list = document.cookie.split(';')
+      for (var i = 0; i < list.length; i++) {
+        var mid = list[i]
+        var mid1 = mid.split('=')
+        var email = mid1[0]
+        console.log(email.trim())
+        if (email.trim() === 'email') {
+          return true
+        }
+      }
+      console.log('cookie验证失败请先登录')
+      return false
+    } else {
+      console.log('没有cookie请先登录')
+      return false
+    }
+  }
+}
+router.beforeEach((to, from, next) => {
+  if (to.path !== '/login') {
+    console.log(to.path)
+    if (!checkLogin.doLgin()) {
+      console.log('未登录')
+      next('/login')
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
 export default router

@@ -32,6 +32,7 @@ export default {
         axios({
           url: 'http://localhost:8081/java/login',
           method: 'post',
+          withCredentials: true,
           data: {
             email: that.email,
             pass: that.pass
@@ -40,6 +41,7 @@ export default {
           if (res.data.code !== 1000002) {
             this.$message.error('账号密码有误')
           } else {
+            this.$store.commit('AddEmail', this.email)
             this.$message.success('登陆成功')
             this.$router.push({
               name: 'start',
@@ -57,6 +59,10 @@ export default {
     doRegist () {
       this.$router.push('/regist')
     }
+  },
+  mounted () {
+    console.log('全局变量')
+    console.log(this.$store.state.email)
   }
 }
 </script>

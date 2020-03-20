@@ -5,14 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    verifyCode: '1111'
+    email: ''
   },
   mutations: {
-    changeVerifyCode (statue, num) {
-      console.log(this.state.verifyCode)
-      this.state.verifyCode = num
-      console.log('修改全局变量')
-      console.log(this.state.verifyCode)
+    AddEmail (state, str) {
+      console.log(state)
+      console.log(str)
+      this.state.email = str
+      console.log(this.state.email)
     }
   },
   actions: {

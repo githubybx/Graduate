@@ -29,9 +29,12 @@
 import axios from 'axios'
 export default {
   mounted () {
+    console.log('获取到了cookie')
+    console.log(document.cookie)
     axios({
       url: 'http://localhost:8081/get/product/All',
-      method: 'get'
+      method: 'get',
+      withCredentials: true
     }).then(res => {
       console.log(res.data.data)
       this.goodslist = res.data.data

@@ -91,7 +91,7 @@
 export default {
   data () {
     return {
-      name: '二哈'
+      name: this.$store.state.email
     }
   },
   methods: {
@@ -126,7 +126,25 @@ export default {
     }
   },
   mounted () {
-    this.name = this.$route.params.email
+    // console.log('全局变量')
+    // console.log(this.$store.state.email)
+    // console.log('获取到了cookie')
+    // console.log(document.cookie)
+    var list = []
+    if (document.cookie !== '') {
+      console.log(document.cookie)
+      list = document.cookie.split(';')
+      for (var i = 0; i < list.length; i++) {
+        var mid = list[i]
+        var mid1 = mid.split('=')
+        var email = mid1[0]
+        console.log(email.trim())
+        if (email.trim() === 'email') {
+          this.name = mid1[1].trim()
+          break
+        }
+      }
+    }
   }
 }
 </script>
